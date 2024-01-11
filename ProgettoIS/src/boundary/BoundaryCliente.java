@@ -2,8 +2,6 @@ package boundary;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 import control.GestionePanineriaOnline;
 import database.ClienteDAO;
 import database.PanineriaDAO;
@@ -41,9 +39,7 @@ public class BoundaryCliente {
 				System.out.println();
 			}
 		}	
-		
 		System.out.println("Arrivederci!");
-		
 	}
 	
 	private static void effettuaOrdine() throws OperationException{
@@ -80,6 +76,7 @@ public class BoundaryCliente {
 				System.out.println("Inserisci la panineria");
 				panineria = scan.nextLine();
 				ePanineria = PanineriaDAO.getPanineria(panineria);
+				
 				if(ePanineria == null) {
 					System.out.println("La panineria inserita non esite, riprovare...");
 				}else {
@@ -127,6 +124,7 @@ public class BoundaryCliente {
 			System.out.println("Il costo totale della spesa è: " + prezzoTotale);
 			System.out.println("Digita 'S' o 's' per confermare l'ordine o qualunque altro carattere per annullare..");
 			String risposta1 = scan.nextLine();
+			
 			if(risposta1.equalsIgnoreCase("S")) {
 				gestionePanineriaOnline.emettiOrdine(panino, quantità, size, idOrdine);
 				System.out.println("ORDINE EFFETTUATO CON SUCCESSO");

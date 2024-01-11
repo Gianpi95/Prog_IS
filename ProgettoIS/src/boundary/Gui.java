@@ -2,15 +2,12 @@ package boundary;
 
 import control.GestionePanineriaOnline;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-
 import control.GestionePanineriaOnline;
 import entity.EntityAggiungiPanino;
 import exception.DBConnectionException;
 import exception.OperationException;
-
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -69,6 +66,7 @@ public class Gui {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		//fine sezione secondo frame
 		
 		//Sezione secondo frame
 		frame1 = new JFrame();
@@ -82,6 +80,7 @@ public class Gui {
 		lblMultiscreen.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblMultiscreen.setBounds(165, 6, 183, 64);
 		frame1.getContentPane().add(lblMultiscreen);
+		//fine sezione secondo frame
 		
 		//Sezione idCliente
 		textField = new JTextField();
@@ -95,24 +94,21 @@ public class Gui {
 		frame.getContentPane().add(lblCliente);
 		//fine sezione idCliente
 		
-		//Sezione interfaccia
+		//Sezione interfaccia (primo frame)
 		DefaultListModel<String> model = new DefaultListModel<>(); 
 		JList<String> list = new JList<>(model);
 		JScrollPane scroll = new JScrollPane(list);
-		
 		frame.add(scroll);
 		scroll.setBounds(240, 148, 185, 110);
-		//fine sezione interfaccia
+		//fine sezione interfaccia (primo frame)
 		
-		//Sezione per visualizzare l'ordine confermato
+		//Sezione per visualizzare l'ordine confermato (secondo frame)
 		DefaultListModel<String> model1 = new DefaultListModel<>(); 
 		JList<String> list1 = new JList<>(model1);
 		JScrollPane scroll1 = new JScrollPane(list1);
-				
 		frame1.add(scroll1);
 		scroll1.setBounds(45, 60, 350, 180);
-		//fine sezione dell'ordine confermato
-		
+		//fine sezione dell'ordine confermato (secondo frame)
 		
 		//Sezione quantità
 		JComboBox comboBox = new JComboBox();
@@ -199,7 +195,6 @@ public class Gui {
 								panini.add(model.getElementAt(i));
 								i=i+1;
 							}
-							//System.out.println( "PANINI: " + panini + "; QUANTITA: " + quantità);
 							int codOrdine = gestionePanineriaOnline.prenotaOrdine(Integer.parseInt(textField.getText()),comboBox_1.getSelectedItem().toString(),panini,quantità,size/2);
 							System.out.println("Attendi che l'ordine sia ricevuto...\nORDINE [Panineria " + comboBox_1.getSelectedItem().toString() + "]");
 							float tot = gestionePanineriaOnline.emettiOrdine(panini,quantità,size/2,codOrdine);

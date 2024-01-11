@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import entity.EntityCliente;
-//import exception.DBConnectionException;
-//import exception.DAOException;
 
 public class ClienteDAO {
 	
@@ -30,6 +27,7 @@ public class ClienteDAO {
 			if(result.next()) {
 					ec = new EntityCliente(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getInt(5), result.getLong(6), result.getString(7));
 			}		
+			
 		}catch(SQLException e) {
 				e.printStackTrace();
 		}finally {
@@ -46,4 +44,5 @@ public class ClienteDAO {
 		return ec;
 			
 	}
+	
 }

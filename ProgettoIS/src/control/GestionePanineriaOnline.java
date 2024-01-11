@@ -3,7 +3,6 @@ package control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
-
 import database.AggiungiPaninoDAO;
 import database.PanineriaDAO;
 import database.PaninoDAO;
@@ -46,27 +45,24 @@ public class GestionePanineriaOnline {
 		float prezzoSingolo = 0;
 		int id = 0;
 		int id1 = 0;
+		int i = 0;
 		
 		ePanineria = PanineriaDAO.getPanineria(nomePanineria);
-		
-		int i=0;
-		
+
 		//varie letture nel db
 		while(i<nPanini) {
 			
 			ePanino = PaninoDAO.getPanino(nomePanino.get(i));
-		
+			
 			eap = AggiungiPaninoDAO.readAggiungiPanino(nomePanino.get(i));
-		
+			
 			prezzoSingolo = ePanino.getPrezzo();
 			
 			ec = ClienteDAO.readCliente(idCliente);
 			
-			
 			prezzoTotale = prezzoTotale+(prezzoSingolo*quantità.get(i));
-			
 			i=i+1;
-		
+			
 		}
 		
         id = generaId();
@@ -97,9 +93,7 @@ public class GestionePanineriaOnline {
 				eo = new EntityOrdine(elemento.getIdOrdine(),null,null,elemento.getCostoTotale(),0,elemento.getCodCliente());
 			}
 			
-			eo.saveOrdine();
-			
-			//salvataggio nel database dell'ordine creato
+			eo.saveOrdine();																	//salvataggio nel database dell'ordine creato
 			
 			for(int i=0; i<nPanini; i++) {
 				id = generaId();
@@ -112,7 +106,9 @@ public class GestionePanineriaOnline {
 					eap = null;
 				}
 				ep = PaninoDAO.getPanino(panino.get(i));
+				
 				eap = new EntityAggiungiPanino(id,quantità.get(i),ep.getIdPanino(),codOrdine);
+				
 				eap.saveAggiungiPanino();														//salvataggio nel db della tupla di AggiungiPanino
 				System.out.println(quantità.get(i) + " " + panino.get(i));
 			}
@@ -135,5 +131,4 @@ public class GestionePanineriaOnline {
         
 	}
 
-	
 }

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import entity.EntityAggiungiPanino;
 
 public class AggiungiPaninoDAO {
@@ -29,6 +28,7 @@ public class AggiungiPaninoDAO {
 			if(result.next()) {
 				eap= new EntityAggiungiPanino(result.getInt(1),result.getInt(2), result.getInt(3), result.getInt(4));
 			}
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

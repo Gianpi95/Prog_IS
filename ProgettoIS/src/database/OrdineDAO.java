@@ -1,17 +1,11 @@
 package database;
 
-//import exception.DAOException;
-//import exception.DBConnectionException;
 import entity.EntityOrdine;
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.util.*;
 
-//import database.*;
 
 public class OrdineDAO {
 	
